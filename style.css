@@ -1,0 +1,551 @@
+/* =============================================
+   LA GRANDE ÉPOQUE — style.css
+   Direction : Cabaret Noir
+   Hero : Plein écran + parallaxe
+   Police titre : Borough Grotesk (custom)
+   Police corps : DM Sans (Google Fonts)
+   ============================================= */
+
+/* ---------- Police custom Borough Grotesk ---------- */
+@font-face {
+  font-family: 'BoroughGrotesk';
+  src: url('fonts/BoroughGrotesk-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Variables ---------- */
+:root {
+  --rouge:      #c0392b;
+  --rouge-vif:  #e74c3c;
+  --noir:       #0a0a0a;
+  --noir-doux:  #111111;
+  --noir-carte: #161616;
+  --creme:      #f0e6d3;
+  --texte-doux: #888888;
+  --bordure:    #1e1e1e;
+  --font-titre: 'BoroughGrotesk', 'Arial Black', sans-serif;
+  --font-corps: 'DM Sans', sans-serif;
+  --transition: 0.3s ease;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-corps); background: var(--noir); color: var(--creme); line-height: 1.7; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* ---------- Container ---------- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+/* =============================================
+   NAVIGATION
+   ============================================= */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: transparent;
+  transition: background var(--transition), border-bottom var(--transition), box-shadow var(--transition);
+}
+
+#navbar.scrolled {
+  background: rgba(10,10,10,0.97);
+  border-bottom: 1px solid var(--rouge);
+  box-shadow: 0 2px 24px rgba(192,57,43,0.15);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo { display: flex; align-items: center; gap: 10px; }
+
+.nav-logo-img {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(192,57,43,0.5);
+  flex-shrink: 0;
+}
+
+.nav-logo-text {
+  font-family: var(--font-titre);
+  font-size: 1.05rem;
+  color: var(--creme);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nav-links { display: flex; gap: 2.5rem; }
+
+.nav-links a {
+  color: rgba(240,230,211,0.55);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color var(--transition);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--rouge-vif); }
+
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none; border: none;
+  cursor: pointer; padding: 4px;
+}
+.nav-burger span { display: block; width: 24px; height: 2px; background: var(--creme); transition: var(--transition); }
+
+.nav-mobile {
+  display: none; flex-direction: column;
+  background: var(--noir);
+  border-top: 1px solid var(--bordure);
+  padding: 1rem 2rem 1.5rem; gap: 0.2rem;
+}
+.nav-mobile.open { display: flex; }
+
+.mobile-link {
+  color: var(--creme); font-size: 0.9rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--bordure);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.mobile-link:hover { color: var(--rouge-vif); }
+
+/* =============================================
+   BOUTONS
+   ============================================= */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-family: var(--font-corps);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: all var(--transition);
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary { background: var(--rouge); color: var(--creme); }
+.btn-primary:hover { background: var(--rouge-vif); transform: translateY(-2px); }
+
+.btn-outline {
+  background: transparent; color: var(--creme);
+  border: 1px solid rgba(240,230,211,0.35);
+}
+.btn-outline:hover { border-color: var(--creme); background: rgba(240,230,211,0.06); transform: translateY(-2px); }
+
+.btn-sm {
+  padding: 0.4rem 1rem; font-size: 0.72rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--rouge); border: 1px solid var(--rouge);
+  background: transparent; white-space: nowrap;
+  cursor: pointer; font-family: var(--font-corps);
+  transition: all var(--transition);
+}
+.btn-sm:hover { background: var(--rouge); color: var(--creme); }
+
+/* =============================================
+   HERO — Plein écran + parallaxe
+   ============================================= */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* Conteneur de la photo — déborde verticalement pour le parallaxe */
+.hero-bg-wrap {
+  position: absolute;
+  top: -15%;
+  left: 0; right: 0;
+  height: 130%;
+  will-change: transform;
+  z-index: 0;
+}
+
+.hero-bg-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  /* Noir et blanc + assombrissement */
+  filter: grayscale(100%) contrast(1.1) brightness(0.5);
+}
+
+/* Dégradé gauche fort pour lisibilité du texte */
+.hero-ov-left {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(10,10,10,0.95) 0%,
+    rgba(10,10,10,0.70) 40%,
+    rgba(10,10,10,0.15) 75%,
+    rgba(10,10,10,0.05) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Dégradé bas pour fusion avec la section suivante */
+.hero-ov-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 220px;
+  background: linear-gradient(to top, var(--noir), transparent);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Cercles décoratifs (inspiration référence) */
+.hero-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(192,57,43,0.12);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-circle-1 {
+  width: 600px; height: 600px;
+  right: 5%; top: 50%;
+  transform: translateY(-50%);
+}
+
+.hero-circle-2 {
+  width: 400px; height: 400px;
+  right: 13%; top: 50%;
+  transform: translateY(-50%);
+  border-color: rgba(192,57,43,0.07);
+}
+
+/* Texte vertical gauche */
+.hero-side-text {
+  position: absolute;
+  left: 18px; top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(240,230,211,0.18);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* Contenu texte */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 52px 0 72px;
+  max-width: 680px;
+}
+
+.hero-tagline {
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--rouge);
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-tagline::before {
+  content: '';
+  display: block;
+  width: 32px; height: 1px;
+  background: var(--rouge);
+  flex-shrink: 0;
+}
+
+.hero-title {
+  font-family: var(--font-titre);
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  font-weight: 400;
+  color: var(--creme);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.2rem;
+}
+
+.hero-title .accent { color: var(--rouge); }
+
+.hero-subtitle {
+  font-size: 0.75rem;
+  color: rgba(240,230,211,0.4);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  padding-left: 44px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-left: 44px;
+}
+
+/* Indicateur scroll */
+.hero-scroll {
+  position: absolute;
+  bottom: 32px; left: 72px;
+  display: flex; align-items: center; gap: 12px;
+  z-index: 2;
+}
+
+.scroll-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--rouge);
+  animation: blink 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.scroll-line-h {
+  width: 40px; height: 1px;
+  background: rgba(240,230,211,0.2);
+}
+
+.hero-scroll span {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(240,230,211,0.25);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.15; }
+}
+
+/* Barre séparatrice rouge */
+.section-bar { height: 2px; background: var(--rouge); }
+
+/* =============================================
+   SECTIONS — commun
+   ============================================= */
+.section { padding: 5.5rem 0; }
+
+.section-header { margin-bottom: 3rem; }
+
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rouge);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-titre);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  color: var(--creme);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+/* =============================================
+   CONCERTS
+   ============================================= */
+.concerts-section { background: var(--noir); }
+.concerts-list { display: flex; flex-direction: column; }
+
+.concert-item {
+  display: flex; align-items: center; gap: 2rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--bordure);
+  transition: background var(--transition), padding-left var(--transition);
+}
+.concert-item:first-child { border-top: 1px solid var(--bordure); }
+.concert-item:hover { background: rgba(192,57,43,0.05); padding-left: 0.5rem; }
+
+.concert-date { display: flex; flex-direction: column; align-items: center; min-width: 52px; }
+
+.date-day {
+  font-family: var(--font-titre);
+  font-size: 2rem; font-weight: 400;
+  color: var(--rouge); line-height: 1;
+  letter-spacing: 0.02em;
+}
+.date-month { font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--texte-doux); }
+
+.concert-info { flex: 1; }
+
+.concert-venue {
+  font-family: var(--font-titre);
+  font-size: 1rem; font-weight: 400;
+  color: var(--creme); text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 0.15rem;
+}
+.concert-city { font-size: 0.8rem; color: var(--texte-doux); }
+.concert-time { font-size: 0.8rem; color: var(--texte-doux); margin-right: 1rem; white-space: nowrap; }
+
+/* =============================================
+   LE GROUPE
+   ============================================= */
+.groupe-section { background: var(--noir-doux); }
+
+.groupe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+
+.bio-text {
+  font-size: 0.95rem; color: var(--texte-doux);
+  margin-bottom: 1.2rem; line-height: 1.85;
+  border-left: 2px solid var(--rouge);
+  padding-left: 1rem;
+}
+
+.membres-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--bordure);
+  border: 1px solid var(--bordure);
+}
+
+.membre-card {
+  background: var(--noir-carte);
+  padding: 1.5rem 1.2rem; text-align: center;
+  border-top: 2px solid var(--rouge);
+  transition: background var(--transition);
+}
+.membre-card:hover { background: #1a1a1a; }
+
+.membre-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--rouge); color: var(--creme);
+  font-family: var(--font-titre); font-size: 0.9rem;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 0.9rem; letter-spacing: 0.04em;
+}
+
+.membre-nom {
+  font-family: var(--font-titre); font-size: 0.85rem;
+  color: var(--creme); text-transform: uppercase;
+  letter-spacing: 0.06em; margin-bottom: 0.3rem;
+}
+.membre-role { font-size: 0.75rem; color: var(--texte-doux); }
+
+/* =============================================
+   DISCOGRAPHIE
+   ============================================= */
+.disco-section { background: var(--noir); }
+
+.albums-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--bordure);
+  border: 1px solid var(--bordure);
+}
+
+.album-card { background: var(--noir-carte); overflow: hidden; transition: background var(--transition); }
+.album-card:hover { background: #1a1a1a; }
+
+.album-cover { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+
+.album-cover-text {
+  font-family: var(--font-titre); font-size: 2.2rem;
+  color: rgba(0,0,0,0.3); letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+.album-info { padding: 1.3rem; border-top: 1px solid var(--bordure); }
+
+.album-titre {
+  font-family: var(--font-titre); font-size: 1rem;
+  color: var(--creme); text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 0.25rem;
+}
+.album-annee { font-size: 0.75rem; color: var(--rouge); letter-spacing: 0.08em; margin-bottom: 0.2rem; }
+.album-tracks { font-size: 0.75rem; color: var(--texte-doux); margin-bottom: 1rem; }
+
+.album-listen { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+.listen-btn {
+  font-size: 0.68rem; padding: 0.28rem 0.7rem;
+  border: 1px solid rgba(192,57,43,0.4);
+  color: var(--rouge); letter-spacing: 0.06em; text-transform: uppercase;
+  transition: all var(--transition);
+}
+.listen-btn:hover { background: var(--rouge); color: var(--creme); border-color: var(--rouge); }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+  background: var(--noir);
+  border-top: 1px solid var(--bordure);
+  padding: 2rem 0;
+}
+
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+.footer-logo { display: flex; align-items: center; gap: 10px; }
+
+.footer-logo-img {
+  width: 28px; height: 28px; border-radius: 50%;
+  object-fit: cover; opacity: 0.6;
+}
+
+.footer-logo-text {
+  font-family: var(--font-titre); font-size: 0.85rem;
+  color: #444; text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+.footer-copy { font-size: 0.75rem; color: #333; }
+
+/* =============================================
+   ANIMATIONS
+   ============================================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+
+  .hero-content { padding: 0 28px 0 44px; }
+  .hero-subtitle, .hero-cta { padding-left: 28px; }
+  .hero-side-text { display: none; }
+  .hero-circle { display: none; }
+  .hero-scroll { left: 44px; }
+
+  .groupe-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .albums-grid { grid-template-columns: 1fr; }
+
+  .concert-item { flex-wrap: wrap; gap: 0.8rem; }
+  .concert-time { display: none; }
+
+  .section { padding: 3.5rem 0; }
+  .footer-inner { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .membres-grid { grid-template-columns: 1fr 1fr; }
+  .hero-cta { flex-direction: column; align-items: flex-start; }
+  .hero-content { padding: 0 20px 0 32px; }
+  .hero-subtitle, .hero-cta { padding-left: 20px; }
+}

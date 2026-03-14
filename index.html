@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Grande Époque</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#accueil" class="nav-logo">
+        <img src="images/logo.png" alt="Logo La Grande Époque" class="nav-logo-img" />
+        <span class="nav-logo-text">La Grande Époque</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#concerts">Concerts</a></li>
+        <li><a href="#groupe">Le Groupe</a></li>
+        <li><a href="#discographie">Discographie</a></li>
+      </ul>
+      <button class="nav-burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="#concerts" class="mobile-link">Concerts</a>
+      <a href="#groupe" class="mobile-link">Le Groupe</a>
+      <a href="#discographie" class="mobile-link">Discographie</a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO — plein écran + parallaxe ========== -->
+  <section id="accueil" class="hero">
+
+    <!-- Fond photo (élément animé pour le parallaxe) -->
+    <div class="hero-bg-wrap" id="hero-bg-wrap">
+      <img src="images/groupe.jpg" alt="La Grande Époque" class="hero-bg-photo" />
+    </div>
+
+    <!-- Overlays -->
+    <div class="hero-ov-left"></div>
+    <div class="hero-ov-bottom"></div>
+
+    <!-- Cercles décoratifs -->
+    <div class="hero-circle hero-circle-1"></div>
+    <div class="hero-circle hero-circle-2"></div>
+
+    <!-- Texte vertical gauche -->
+    <div class="hero-side-text">La Grande Époque · Rock Alternatif · Lyon</div>
+
+    <!-- Contenu principal -->
+    <div class="hero-content">
+      <p class="hero-tagline">Festoyons</p>
+      <h1 class="hero-title">La Grande<br /><span class="accent">Époque</span></h1>
+      <p class="hero-subtitle">Rock alternatif · Lyon · depuis 2018</p>
+      <div class="hero-cta">
+        <a href="#concerts" class="btn btn-primary">Voir les concerts</a>
+        <a href="#discographie" class="btn btn-outline">Écouter</a>
+      </div>
+    </div>
+
+    <!-- Indicateur de scroll -->
+    <div class="hero-scroll">
+      <div class="scroll-dot"></div>
+      <div class="scroll-line-h"></div>
+      <span>Défiler</span>
+    </div>
+
+  </section>
+
+  <!-- Ligne rouge séparatrice -->
+  <div class="section-bar"></div>
+
+  <!-- ========== CONCERTS ========== -->
+  <section id="concerts" class="section concerts-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Sur scène</span>
+        <h2 class="section-title">Dates de concert</h2>
+      </div>
+      <div class="concerts-list">
+
+        <div class="concert-item">
+          <div class="concert-date">
+            <span class="date-day">14</span>
+            <span class="date-month">Fév</span>
+          </div>
+          <div class="concert-info">
+            <h3 class="concert-venue">Le Transbordeur</h3>
+            <p class="concert-city">Lyon · Villeurbanne</p>
+          </div>
+          <div class="concert-meta">
+            <span class="concert-time">20h30</span>
+          </div>
+          <a href="#" class="btn btn-sm">Billets</a>
+        </div>
+
+        <div class="concert-item">
+          <div class="concert-date">
+            <span class="date-day">28</span>
+            <span class="date-month">Fév</span>
+          </div>
+          <div class="concert-info">
+            <h3 class="concert-venue">La Cartonnerie</h3>
+            <p class="concert-city">Reims</p>
+          </div>
+          <div class="concert-meta">
+            <span class="concert-time">21h00</span>
+          </div>
+          <a href="#" class="btn btn-sm">Billets</a>
+        </div>
+
+        <div class="concert-item">
+          <div class="concert-date">
+            <span class="date-day">15</span>
+            <span class="date-month">Mar</span>
+          </div>
+          <div class="concert-info">
+            <h3 class="concert-venue">La Cigale</h3>
+            <p class="concert-city">Paris</p>
+          </div>
+          <div class="concert-meta">
+            <span class="concert-time">20h00</span>
+          </div>
+          <a href="#" class="btn btn-sm">Billets</a>
+        </div>
+
+        <div class="concert-item">
+          <div class="concert-date">
+            <span class="date-day">03</span>
+            <span class="date-month">Avr</span>
+          </div>
+          <div class="concert-info">
+            <h3 class="concert-venue">Le Bikini</h3>
+            <p class="concert-city">Toulouse · Ramonville</p>
+          </div>
+          <div class="concert-meta">
+            <span class="concert-time">21h00</span>
+          </div>
+          <a href="#" class="btn btn-sm">Billets</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LE GROUPE ========== -->
+  <section id="groupe" class="section groupe-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Qui sommes-nous</span>
+        <h2 class="section-title">Le Groupe</h2>
+      </div>
+      <div class="groupe-grid">
+        <div class="groupe-bio">
+          <p class="bio-text">
+            Né à Lyon en 2018, <strong>La Grande Époque</strong> est un quartet de rock alternatif
+            qui mêle guitares électriques épurées, textes en français et atmosphères cinématographiques.
+          </p>
+          <p class="bio-text">
+            Après deux EP autoproduits et des centaines de concerts en France et en Belgique,
+            le groupe sort son premier album studio en 2023, salué par la presse spécialisée.
+          </p>
+        </div>
+        <div class="membres-grid">
+          <div class="membre-card">
+            <div class="membre-avatar">JM</div>
+            <h4 class="membre-nom">Jean-Marc</h4>
+            <p class="membre-role">Chant · Guitare</p>
+          </div>
+          <div class="membre-card">
+            <div class="membre-avatar">SL</div>
+            <h4 class="membre-nom">Sophie</h4>
+            <p class="membre-role">Guitare lead</p>
+          </div>
+          <div class="membre-card">
+            <div class="membre-avatar">RD</div>
+            <h4 class="membre-nom">Romain</h4>
+            <p class="membre-role">Basse</p>
+          </div>
+          <div class="membre-card">
+            <div class="membre-avatar">LB</div>
+            <h4 class="membre-nom">Léa</h4>
+            <p class="membre-role">Batterie</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DISCOGRAPHIE ========== -->
+  <section id="discographie" class="section disco-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Notre musique</span>
+        <h2 class="section-title">Discographie</h2>
+      </div>
+      <div class="albums-grid">
+
+        <div class="album-card">
+          <div class="album-cover" style="background: linear-gradient(135deg, #c0392b, #8b1a1a);">
+            <span class="album-cover-text">LGÉ</span>
+          </div>
+          <div class="album-info">
+            <h3 class="album-titre">L'Âge d'Or</h3>
+            <p class="album-annee">2023 · Album</p>
+            <p class="album-tracks">10 titres · 42 min</p>
+            <div class="album-listen">
+              <a href="#" class="listen-btn">Spotify</a>
+              <a href="#" class="listen-btn">Deezer</a>
+              <a href="#" class="listen-btn">Apple Music</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="album-card">
+          <div class="album-cover" style="background: linear-gradient(135deg, #2d1b00, #5c3a00);">
+            <span class="album-cover-text">EP II</span>
+          </div>
+          <div class="album-info">
+            <h3 class="album-titre">Contre-courant</h3>
+            <p class="album-annee">2021 · EP</p>
+            <p class="album-tracks">5 titres · 20 min</p>
+            <div class="album-listen">
+              <a href="#" class="listen-btn">Spotify</a>
+              <a href="#" class="listen-btn">Deezer</a>
+              <a href="#" class="listen-btn">Apple Music</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="album-card">
+          <div class="album-cover" style="background: linear-gradient(135deg, #0d0d0d, #2a2a2a);">
+            <span class="album-cover-text">EP I</span>
+          </div>
+          <div class="album-info">
+            <h3 class="album-titre">Les Débuts</h3>
+            <p class="album-annee">2019 · EP</p>
+            <p class="album-tracks">4 titres · 16 min</p>
+            <div class="album-listen">
+              <a href="#" class="listen-btn">Spotify</a>
+              <a href="#" class="listen-btn">Deezer</a>
+              <a href="#" class="listen-btn">Apple Music</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="Logo" class="footer-logo-img" />
+          <span class="footer-logo-text">La Grande Époque</span>
+        </div>
+        <p class="footer-copy">© 2025 La Grande Époque · Tous droits réservés</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
