@@ -9,7 +9,7 @@
 /* ---------- Police custom Borough Grotesk ---------- */
 @font-face {
   font-family: 'BoroughGrotesk';
-  src: url('fonts/BoroughGrotesk-Regular.otf') format('opentype');
+  src: url('./fonts/BoroughGrotesk-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
